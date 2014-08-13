@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF6D8094199C1BDC00D095ED /* ActuatorsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6D8093199C1BDC00D095ED /* ActuatorsTableViewController.swift */; };
 		FFD11580199A7D6000F156E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD1157F199A7D6000F156E9 /* AppDelegate.swift */; };
 		FFD11583199A7D6000F156E9 /* WaveApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFD11581199A7D6000F156E9 /* WaveApp.xcdatamodeld */; };
-		FFD11585199A7D6000F156E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD11584199A7D6000F156E9 /* ViewController.swift */; };
 		FFD11588199A7D6000F156E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFD11586199A7D6000F156E9 /* Main.storyboard */; };
 		FFD1158A199A7D6000F156E9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFD11589199A7D6000F156E9 /* Images.xcassets */; };
 		FFD11596199A7D6000F156E9 /* WaveAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD11595199A7D6000F156E9 /* WaveAppTests.swift */; };
+		FFD115A0199A7ECF00F156E9 /* WavesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD1159F199A7ECF00F156E9 /* WavesTableViewController.swift */; };
+		FFD115A2199A7EF800F156E9 /* WaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD115A1199A7EF800F156E9 /* WaveViewController.swift */; };
+		FFD115A4199A7F2000F156E9 /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD115A3199A7F2000F156E9 /* Wave.swift */; };
+		FFDBC036199C1D740044D4FF /* Actuator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDBC035199C1D740044D4FF /* Actuator.swift */; };
+		FFDBC038199C1E930044D4FF /* ActuatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDBC037199C1E930044D4FF /* ActuatorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,16 +31,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FF6D8093199C1BDC00D095ED /* ActuatorsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActuatorsTableViewController.swift; sourceTree = "<group>"; };
 		FFD1157A199A7D6000F156E9 /* WaveApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaveApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFD1157E199A7D6000F156E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFD1157F199A7D6000F156E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFD11582199A7D6000F156E9 /* WaveApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WaveApp.xcdatamodel; sourceTree = "<group>"; };
-		FFD11584199A7D6000F156E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FFD11587199A7D6000F156E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FFD11589199A7D6000F156E9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FFD1158F199A7D6000F156E9 /* WaveAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WaveAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFD11594199A7D6000F156E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFD11595199A7D6000F156E9 /* WaveAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveAppTests.swift; sourceTree = "<group>"; };
+		FFD1159F199A7ECF00F156E9 /* WavesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WavesTableViewController.swift; sourceTree = "<group>"; };
+		FFD115A1199A7EF800F156E9 /* WaveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveViewController.swift; sourceTree = "<group>"; };
+		FFD115A3199A7F2000F156E9 /* Wave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
+		FFDBC035199C1D740044D4FF /* Actuator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actuator.swift; sourceTree = "<group>"; };
+		FFDBC037199C1E930044D4FF /* ActuatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActuatorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,11 +88,16 @@
 			isa = PBXGroup;
 			children = (
 				FFD1157F199A7D6000F156E9 /* AppDelegate.swift */,
-				FFD11584199A7D6000F156E9 /* ViewController.swift */,
 				FFD11586199A7D6000F156E9 /* Main.storyboard */,
 				FFD11589199A7D6000F156E9 /* Images.xcassets */,
 				FFD11581199A7D6000F156E9 /* WaveApp.xcdatamodeld */,
 				FFD1157D199A7D6000F156E9 /* Supporting Files */,
+				FFD1159F199A7ECF00F156E9 /* WavesTableViewController.swift */,
+				FFD115A1199A7EF800F156E9 /* WaveViewController.swift */,
+				FFD115A3199A7F2000F156E9 /* Wave.swift */,
+				FF6D8093199C1BDC00D095ED /* ActuatorsTableViewController.swift */,
+				FFDBC035199C1D740044D4FF /* Actuator.swift */,
+				FFDBC037199C1E930044D4FF /* ActuatorViewController.swift */,
 			);
 			path = WaveApp;
 			sourceTree = "<group>";
@@ -211,8 +226,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFD11585199A7D6000F156E9 /* ViewController.swift in Sources */,
+				FFDBC036199C1D740044D4FF /* Actuator.swift in Sources */,
+				FFDBC038199C1E930044D4FF /* ActuatorViewController.swift in Sources */,
 				FFD11583199A7D6000F156E9 /* WaveApp.xcdatamodeld in Sources */,
+				FFD115A4199A7F2000F156E9 /* Wave.swift in Sources */,
+				FF6D8094199C1BDC00D095ED /* ActuatorsTableViewController.swift in Sources */,
+				FFD115A2199A7EF800F156E9 /* WaveViewController.swift in Sources */,
+				FFD115A0199A7ECF00F156E9 /* WavesTableViewController.swift in Sources */,
 				FFD11580199A7D6000F156E9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,6 +419,7 @@
 				FFD1159B199A7D6000F156E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FFD1159C199A7D6000F156E9 /* Build configuration list for PBXNativeTarget "WaveAppTests" */ = {
 			isa = XCConfigurationList;
@@ -407,6 +428,7 @@
 				FFD1159E199A7D6000F156E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
