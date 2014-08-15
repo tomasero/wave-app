@@ -44,8 +44,6 @@ class WaveViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func saveTapped(sender: AnyObject) {
-        //Reference to our app delegate
-        println(txtName.text)
         if txtName.text == "" || txtDuration.text == "" || txtPeriod.text == "" || txtMinAmp.text == "" || txtMaxAmp.text == "" || txtStep.text == "" || txtType.text == "" {
             var alert: UIAlertView = UIAlertView()
             alert.title = "Errors"
@@ -80,7 +78,7 @@ class WaveViewController: UIViewController, UITextFieldDelegate {
             //Reference NSManaged object context
             
             let context: NSManagedObjectContext = appDel.managedObjectContext! //I unwrapped but tutorial didn't say that
-            let entity = NSEntityDescription.entityForName("Waves", inManagedObjectContext: context)
+            let entity = NSEntityDescription.entityForName("Wave", inManagedObjectContext: context)
             
             //Check if item exists
             
@@ -104,8 +102,9 @@ class WaveViewController: UIViewController, UITextFieldDelegate {
                 newWave.maxAmp = txtMaxAmp.text
                 newWave.step = txtStep.text
                 newWave.type = txtType.text
+                existingWave = newWave
             }
-            
+            println((existingWave as Wave).toJsonString())
             //Save our context
             context.save(nil)
             

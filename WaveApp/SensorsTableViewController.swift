@@ -1,9 +1,9 @@
 import UIKit
 import CoreData
 
-class ActuatorsTableViewController: UITableViewController {
+class SensorsTableViewController: UITableViewController {
     
-    var actuatorList:Array<AnyObject> = []
+    var sensorList:Array<AnyObject> = []
     
     
     override func viewDidLoad() {
@@ -15,20 +15,21 @@ class ActuatorsTableViewController: UITableViewController {
         
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext!
-        let fetchReq = NSFetchRequest(entityName: "Actuator")
+        let fetchReq = NSFetchRequest(entityName: "Sensor")
         
-        actuatorList = context.executeFetchRequest(fetchReq, error: nil)
+        sensorList = context.executeFetchRequest(fetchReq, error: nil)
         tableView.reloadData()
         
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        if segue.identifier? == "updateActuator" { //prevent nil segues
-            var selectedActuator: NSManagedObject = actuatorList[self.tableView.indexPathForSelectedRow().row] as NSManagedObject
-            let IVC: ActuatorViewController = segue.destinationViewController as ActuatorViewController
-            IVC.name = selectedActuator.valueForKey("name") as? String //added ? after as --> as?
-            IVC.pin = selectedActuator.valueForKey("pin") as? String
-            IVC.existingActuator = selectedActuator
+        if segue.identifier? == "updateSensor" { //prevent nil segues
+            var selectedSensor: NSManagedObject = sensorList[self.tableView.indexPathForSelectedRow().row] as NSManagedObject
+            let IVC: SensorViewController = segue.destinationViewController as SensorViewController
+            IVC.name = selectedSensor.valueForKey("name") as? String //added ? after as --> as?
+            IVC.pin = selectedSensor.valueForKey("pin") as? String
+            IVC.sensitivity = selectedSensor.valueForKey("sensitivity") as? String
+            IVC.existingSensor = selectedSensor
         }
     }
     
@@ -44,7 +45,7 @@ class ActuatorsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-        return actuatorList.count
+        return sensorList.count
     }
     
     
@@ -52,10 +53,11 @@ class ActuatorsTableViewController: UITableViewController {
         let cellID: NSString = "Cell"
         var cell: UITableViewCell = tableView?.dequeueReusableCellWithIdentifier(cellID) as UITableViewCell
         if let ip = indexPath {
-            var data: NSManagedObject = actuatorList[ip.row] as NSManagedObject
+            var data: Sensor = sensorList[ip.row] as Sensor
             cell.textLabel.text = data.valueForKeyPath("name") as String
             var pin = data.valueForKeyPath("pin") as String
-            cell.detailTextLabel.text = "Pin: \(pin)"
+            var sensitivity = data.valueForKeyPath("sensitivity") as String
+            cell.detailTextLabel.text = "Pin: \(pin) | Sensitivity: \(sensitivity)"
         }
         
         return cell
@@ -77,8 +79,8 @@ class ActuatorsTableViewController: UITableViewController {
         let context:NSManagedObjectContext = appDel.managedObjectContext!
         if editingStyle == UITableViewCellEditingStyle.Delete {
             if let tv = tableView {
-                context.deleteObject(actuatorList[indexPath!.row] as NSManagedObject)
-                actuatorList.removeAtIndex(indexPath!.row)
+                context.deleteObject(sensorList[indexPath!.row] as NSManagedObject)
+                sensorList.removeAtIndex(indexPath!.row)
                 tv.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
             }
             var error: NSError? = nil

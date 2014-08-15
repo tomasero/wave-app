@@ -1,30 +1,35 @@
 import UIKit
 import CoreData
 
-class ActuatorViewController: UIViewController, UITextFieldDelegate {
+class SensorViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var txtName: UITextField!
     @IBOutlet var txtPin: UITextField!
+    @IBOutlet var txtSensitivity: UITextField!
     var name: String?
     var pin: String?
+    var sensitivity: String?
     
-    var existingActuator: NSManagedObject!
+    var existingSensor: NSManagedObject!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if existingActuator {
+        if existingSensor {
             txtName.text = name
             txtPin.text = pin
+            txtSensitivity.text = sensitivity
         }
         //This makes it so that textFieldShouldReturn works and the keyboard hides when the user clicks return
         txtName.delegate = self
         txtPin.delegate = self
+        txtSensitivity.delegate = self
         
     }
     
     @IBAction func saveTapped(sender: AnyObject) {
-        if txtName.text == "" || txtPin.text == "" {
+        //Reference to our app delegate
+        if txtName.text == "" || txtPin.text == "" || txtSensitivity.text == "" {
             var alert: UIAlertView = UIAlertView()
             alert.title = "Errors"
             var message = String()
@@ -33,6 +38,9 @@ class ActuatorViewController: UIViewController, UITextFieldDelegate {
             }
             if txtPin.text == "" {
                 message += "Duration is empty\n"
+            }
+            if txtSensitivity.text == "" {
+                message += "Sensitivity is empty\n"
             }
             alert.message = message
             alert.addButtonWithTitle("Ok")
@@ -43,42 +51,43 @@ class ActuatorViewController: UIViewController, UITextFieldDelegate {
             //Reference NSManaged object context
             
             let context: NSManagedObjectContext = appDel.managedObjectContext! //I unwrapped but tutorial didn't say that
-            let entity = NSEntityDescription.entityForName("Actuator", inManagedObjectContext: context)
+            let entity = NSEntityDescription.entityForName("Sensor", inManagedObjectContext: context)
             
             //Check if item exists
             
-            if existingActuator {
-                existingActuator.setValue(txtName.text as String, forKey: "name")
-                existingActuator.setValue(txtPin.text as String, forKey: "pin")
-                //println("newActuator(casted to Actuator): \((existingActuator as Actuator).name)")
+            if existingSensor {
+                existingSensor.setValue(txtName.text as String, forKey: "name")
+                existingSensor.setValue(txtPin.text as String, forKey: "pin")
+                existingSensor.setValue(txtSensitivity.text as String, forKey: "sensitivity")
             } else {
                 //Create instance of our data model and initialize
-                var newActuator = Actuator(entity: entity, insertIntoManagedObjectContext: context)
+                var newSensor = Sensor(entity: entity, insertIntoManagedObjectContext: context)
                 
                 //Map our properties
-                newActuator.name = txtName.text
-                newActuator.pin = txtPin.text
-                println("newActuator: \(newActuator.name)")
-                existingActuator = newActuator
-                //println("existingActuator: \((existingActuator as Actuator).name)")
+                newSensor.name = txtName.text
+                newSensor.pin = txtPin.text
+                newSensor.sensitivity = txtSensitivity.text
+                existingSensor = newSensor
+                
             }
-            //println(existingActuator)
-            println((existingActuator as Actuator).toJsonString())
+            
+            println((existingSensor as Sensor).toJsonString())
+
             
             //Save our context
             context.save(nil)
             
             //navigate back to root vc
             //self.navigationController.popToRootViewControllerAnimated(true)
-            let actuatorsTableViewController = self.storyboard.instantiateViewControllerWithIdentifier("ActuatorsTableViewController") as ActuatorsTableViewController
-            self.navigationController.pushViewController(actuatorsTableViewController, animated: false)
+            let sensorsTableViewController = self.storyboard.instantiateViewControllerWithIdentifier("SensorsTableViewController") as SensorsTableViewController
+            self.navigationController.pushViewController(sensorsTableViewController, animated: false)
         }
     }
     
     @IBAction func cancelTapped(sender: AnyObject) {
         //self.navigationController.popToRootViewControllerAnimated(true)
-        let actuatorsTableViewController = self.storyboard.instantiateViewControllerWithIdentifier("ActuatorsTableViewController") as ActuatorsTableViewController
-        self.navigationController.pushViewController(actuatorsTableViewController, animated: false)
+        let sensorsTableViewController = self.storyboard.instantiateViewControllerWithIdentifier("SensorsTableViewController") as SensorsTableViewController
+        self.navigationController.pushViewController(sensorsTableViewController, animated: false)
     }
     
     override func didReceiveMemoryWarning() {

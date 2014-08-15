@@ -15,7 +15,7 @@ class WavesTableViewController: UITableViewController {
         
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext!
-        let fetchReq = NSFetchRequest(entityName: "Waves")
+        let fetchReq = NSFetchRequest(entityName: "Wave")
         
         waveList = context.executeFetchRequest(fetchReq, error: nil)
         tableView.reloadData()

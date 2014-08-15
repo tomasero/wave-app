@@ -22,4 +22,26 @@ class Wave: NSManagedObject {
     @NSManaged var step: String
     @NSManaged var type: String
     
+    func toDictionary() -> [String:String] {
+        return [
+            "name": name,
+            "duration": duration,
+            "period": period,
+            "minAmp": minAmp,
+            "maxAmp": maxAmp,
+            "step": step,
+            "type": type
+        ]
+    }
+    
+    func toJson() -> NSData! {
+        var dictionary = self.toDictionary()
+        var err: NSError?
+        return NSJSONSerialization.dataWithJSONObject(dictionary, options: NSJSONWritingOptions(0), error: &err)
+    }
+    
+    func toJsonString() -> String! {
+        return NSString(data: self.toJson(), encoding: NSUTF8StringEncoding)
+    }
+    
 }

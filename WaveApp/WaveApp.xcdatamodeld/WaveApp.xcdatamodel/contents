@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6220.8" systemVersion="13E28" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Actuators" representedClassName="Actuator" syncable="YES">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6220.8" systemVersion="13E28" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Actuator" representedClassName="Actuator" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pin" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Waves" representedClassName="Wave" syncable="YES">
+    <entity name="Sensor" representedClassName="Sensor" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pin" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sensitivity" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Wave" representedClassName="Wave" syncable="YES">
         <attribute name="duration" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="maxAmp" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="minAmp" optional="YES" attributeType="String" syncable="YES"/>
@@ -14,7 +19,8 @@
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Actuators" positionX="-54" positionY="45" width="128" height="75"/>
-        <element name="Waves" positionX="-54" positionY="-9" width="128" height="148"/>
+        <element name="Actuator" positionX="-54" positionY="-9" width="128" height="73"/>
+        <element name="Sensor" positionX="-36" positionY="9" width="128" height="88"/>
+        <element name="Wave" positionX="-63" positionY="-18" width="128" height="148"/>
     </elements>
 </model>

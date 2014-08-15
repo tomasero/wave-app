@@ -32,7 +32,7 @@
                                             <segue destination="gin-5g-8g5" kind="push" identifier="actuators" id="L25-cE-Y0I"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="3L6-qF-NSx" style="IBUITableViewCellStyleDefault" id="1fj-Mu-RWs">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="3L6-qF-NSx" style="IBUITableViewCellStyleDefault" id="1fj-Mu-RWs">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1fj-Mu-RWs" id="AIQ-Ar-47L">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -45,6 +45,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="9gd-2P-BKJ" kind="push" identifier="sensors" id="tmR-Pg-uZ4"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="J20-hy-g4Y" style="IBUITableViewCellStyleDefault" id="Oou-1T-LYH">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -167,7 +170,7 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="gin-5g-8g5" id="jU4-8y-FTd"/>
+                            <outlet property="dataSource" destination="gin-5g-8g5" id="fdX-Oy-R51"/>
                             <outlet property="delegate" destination="gin-5g-8g5" id="oPX-MC-4EE"/>
                         </connections>
                     </tableView>
@@ -179,14 +182,69 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Avn-hC-GQN">
                             <connections>
-                                <segue destination="N1D-0A-cUc" kind="push" identifier="" id="LEb-RF-joz"/>
+                                <segue destination="N1D-0A-cUc" kind="push" identifier="newActuator" id="LEb-RF-joz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RJq-Qc-c6d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="916" y="-263"/>
+            <point key="canvasLocation" x="910" y="-946"/>
+        </scene>
+        <!--Sensor List-->
+        <scene sceneID="2e9-xY-el1">
+            <objects>
+                <tableViewController storyboardIdentifier="SensorsTableViewController" id="9gd-2P-BKJ" customClass="SensorsTableViewController" customModule="WaveApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cln-py-zjY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="8Gs-x7-PMf" detailTextLabel="7K9-Qr-a6r" style="IBUITableViewCellStyleSubtitle" id="ukT-Iq-mdQ">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ukT-Iq-mdQ" id="0xj-8f-UV3">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Gs-x7-PMf">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7K9-Qr-a6r">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="hXo-nD-gFR" kind="push" identifier="updateSensor" id="Bis-6r-POy"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="9gd-2P-BKJ" id="liS-bo-cMa"/>
+                            <outlet property="delegate" destination="9gd-2P-BKJ" id="uEW-gT-Hsa"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Sensor List" id="z6b-qi-lod">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="92Z-TO-UY3">
+                            <connections>
+                                <action selector="backTapped:" destination="9gd-2P-BKJ" id="WLN-Kk-mvo"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="13y-0U-cKf">
+                            <connections>
+                                <segue destination="hXo-nD-gFR" kind="push" identifier="newSensor" id="0sE-9a-EfN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qqx-y3-fEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="910" y="-298"/>
         </scene>
         <!--Actuator-->
         <scene sceneID="cgn-f1-Igw">
@@ -244,7 +302,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a1g-1f-Esh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1400" y="-259"/>
+            <point key="canvasLocation" x="1404" y="-946"/>
         </scene>
         <!--Wave List-->
         <scene sceneID="pfi-CN-v6h">
@@ -292,7 +350,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lHX-76-kPg">
                             <connections>
-                                <segue destination="mVC-kC-zrk" kind="push" id="t08-NW-ia0"/>
+                                <segue destination="mVC-kC-zrk" kind="push" identifier="newWave" id="t08-NW-ia0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -300,6 +358,78 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eDI-rb-HDd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="915" y="366"/>
+        </scene>
+        <!--Sensor-->
+        <scene sceneID="9CT-VZ-VLa">
+            <objects>
+                <viewController id="hXo-nD-gFR" customClass="SensorViewController" customModule="WaveApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G6i-El-YEj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="MIh-XJ-NdL">
+                                <rect key="frame" x="159" y="134" width="145" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V6i-Ai-qAR">
+                                <rect key="frame" x="16" y="100" width="46" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pin" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jQW-yl-jbg">
+                                <rect key="frame" x="16" y="138" width="25" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="lHQ-IT-YO6">
+                                <rect key="frame" x="159" y="172" width="145" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sensitivity" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wgl-d5-hH5">
+                                <rect key="frame" x="16" y="176" width="78" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="1sE-tj-fHk">
+                                <rect key="frame" x="159" y="96" width="145" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Sensor" id="3L8-Ey-SUi">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="7pF-iS-xO4">
+                            <connections>
+                                <action selector="cancelTapped:" destination="hXo-nD-gFR" id="Brg-b8-xwL"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="knn-s6-sVR">
+                            <connections>
+                                <action selector="saveTapped:" destination="hXo-nD-gFR" id="pbH-l7-tVC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="txtName" destination="1sE-tj-fHk" id="Sd2-dm-hXL"/>
+                        <outlet property="txtPin" destination="MIh-XJ-NdL" id="wcu-dS-jRZ"/>
+                        <outlet property="txtSensitivity" destination="lHQ-IT-YO6" id="L9E-L9-N4L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hsL-62-zGn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1404" y="-298"/>
         </scene>
         <!--Wave-->
         <scene sceneID="cws-Ld-XjQ">
@@ -457,6 +587,7 @@
         </simulatedScreenMetrics>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="Bis-6r-POy"/>
         <segue reference="0Pf-Fp-8HR"/>
         <segue reference="S91-Gz-Sw2"/>
     </inferredMetricsTieBreakers>
