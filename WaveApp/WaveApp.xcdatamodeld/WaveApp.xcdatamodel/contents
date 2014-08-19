@@ -20,7 +20,7 @@
     </entity>
     <elements>
         <element name="Actuator" positionX="-54" positionY="-9" width="128" height="73"/>
-        <element name="Sensor" positionX="-36" positionY="9" width="128" height="88"/>
-        <element name="Wave" positionX="-63" positionY="-18" width="128" height="148"/>
+        <element name="Sensor" positionX="124" positionY="-45" width="128" height="88"/>
+        <element name="Wave" positionX="-63" positionY="-207" width="128" height="148"/>
     </elements>
 </model>

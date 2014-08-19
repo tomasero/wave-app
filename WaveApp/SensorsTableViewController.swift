@@ -5,6 +5,23 @@ class SensorsTableViewController: UITableViewController {
     
     var sensorList:Array<AnyObject> = []
     
+    //returns list saved in CoreData
+    func getList() -> Array<AnyObject> {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        let fetchReq = NSFetchRequest(entityName: "Sensor")
+        return context.executeFetchRequest(fetchReq, error: nil)
+    }
+    //checks if item in coredata list already exists (has same name)
+    func isInList(name: String) -> Bool {
+        var list = getList()
+        for item in list {
+            if name == item.name {
+                return true
+            }
+        }
+        return false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

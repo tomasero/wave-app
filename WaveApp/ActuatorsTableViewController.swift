@@ -5,6 +5,23 @@ class ActuatorsTableViewController: UITableViewController {
     
     var actuatorList:Array<AnyObject> = []
     
+    //returns list saved in CoreData
+    func getList() -> Array<AnyObject> {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        let fetchReq = NSFetchRequest(entityName: "Actuator")
+        return context.executeFetchRequest(fetchReq, error: nil)
+    }
+    //checks if item in coredata list already exists (has same name)
+    func isInList(name: String) -> Bool {
+        var list = getList()
+        for item in list {
+            if name == item.name {
+                return true
+            }
+        }
+        return false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -12,12 +29,7 @@ class ActuatorsTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        
-        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let context:NSManagedObjectContext = appDel.managedObjectContext!
-        let fetchReq = NSFetchRequest(entityName: "Actuator")
-        
-        actuatorList = context.executeFetchRequest(fetchReq, error: nil)
+        actuatorList = getList()
         tableView.reloadData()
         
     }

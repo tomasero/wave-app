@@ -24,9 +24,11 @@ class ActuatorViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func saveTapped(sender: AnyObject) {
+        var saveSuccessful: Bool = false
+        let actuatorsTableViewController = self.storyboard.instantiateViewControllerWithIdentifier("ActuatorsTableViewController") as ActuatorsTableViewController
         if txtName.text == "" || txtPin.text == "" {
             var alert: UIAlertView = UIAlertView()
-            alert.title = "Errors"
+            alert.title = "Error"
             var message = String()
             if txtName.text == "" {
                 message += "Name is empty\n"
@@ -48,30 +50,42 @@ class ActuatorViewController: UIViewController, UITextFieldDelegate {
             //Check if item exists
             
             if existingActuator {
-                existingActuator.setValue(txtName.text as String, forKey: "name")
-                existingActuator.setValue(txtPin.text as String, forKey: "pin")
-                //println("newActuator(casted to Actuator): \((existingActuator as Actuator).name)")
+                //if new name is not the same as the previous
+                //and the new name is not in the list
+                if txtName.text != (existingActuator as Actuator).name && actuatorsTableViewController.isInList(txtName.text) {
+                    var alert: UIAlertView = UIAlertView()
+                    alert.title = "Error"
+                    alert.message = "Actuator \(txtName.text) already exists"
+                    alert.addButtonWithTitle("Ok")
+                    alert.show()
+                } else {
+                    existingActuator.setValue(txtName.text as String, forKey: "name")
+                    existingActuator.setValue(txtPin.text as String, forKey: "pin")
+                    saveSuccessful = true
+                }
             } else {
-                //Create instance of our data model and initialize
-                var newActuator = Actuator(entity: entity, insertIntoManagedObjectContext: context)
-                
-                //Map our properties
-                newActuator.name = txtName.text
-                newActuator.pin = txtPin.text
-                println("newActuator: \(newActuator.name)")
-                existingActuator = newActuator
-                //println("existingActuator: \((existingActuator as Actuator).name)")
+                //checks of name already exists
+                if actuatorsTableViewController.isInList(txtName.text) {
+                    var alert: UIAlertView = UIAlertView()
+                    alert.title = "Error"
+                    alert.message = "Actuator \(txtName.text) already exists"
+                    alert.addButtonWithTitle("Ok")
+                    alert.show()
+                } else {
+                    //Create instance of our data model and initialize
+                    var newActuator = Actuator(entity: entity, insertIntoManagedObjectContext: context)
+                    newActuator.name = txtName.text
+                    newActuator.pin = txtPin.text
+                    println("newActuator: \(newActuator.name)")
+                    existingActuator = newActuator
+                    saveSuccessful = true
+                }
             }
-            //println(existingActuator)
-            println((existingActuator as Actuator).toJsonString())
-            
-            //Save our context
-            context.save(nil)
-            
-            //navigate back to root vc
-            //self.navigationController.popToRootViewControllerAnimated(true)
-            let actuatorsTableViewController = self.storyboard.instantiateViewControllerWithIdentifier("ActuatorsTableViewController") as ActuatorsTableViewController
-            self.navigationController.pushViewController(actuatorsTableViewController, animated: false)
+            if saveSuccessful {
+                println((existingActuator as Actuator).toJsonString())
+                context.save(nil)
+                self.navigationController.pushViewController(actuatorsTableViewController, animated: false)
+            }
         }
     }
     

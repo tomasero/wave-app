@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF1BB70119A1E54A00CFBDE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF1BB70019A1E54A00CFBDE5 /* Main.storyboard */; };
 		FF6D8094199C1BDC00D095ED /* ActuatorsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6D8093199C1BDC00D095ED /* ActuatorsTableViewController.swift */; };
 		FFC85CE6199D87BB006EAB92 /* WaveApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFC85CE4199D87BB006EAB92 /* WaveApp.xcdatamodeld */; };
 		FFD11580199A7D6000F156E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD1157F199A7D6000F156E9 /* AppDelegate.swift */; };
-		FFD11588199A7D6000F156E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFD11586199A7D6000F156E9 /* Main.storyboard */; };
 		FFD1158A199A7D6000F156E9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFD11589199A7D6000F156E9 /* Images.xcassets */; };
 		FFD11596199A7D6000F156E9 /* WaveAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD11595199A7D6000F156E9 /* WaveAppTests.swift */; };
 		FFD115A0199A7ECF00F156E9 /* WavesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD1159F199A7ECF00F156E9 /* WavesTableViewController.swift */; };
@@ -34,12 +34,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FF1BB70019A1E54A00CFBDE5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FF6D8093199C1BDC00D095ED /* ActuatorsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActuatorsTableViewController.swift; sourceTree = "<group>"; };
 		FFC85CE5199D87BB006EAB92 /* WaveApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WaveApp.xcdatamodel; sourceTree = "<group>"; };
 		FFD1157A199A7D6000F156E9 /* WaveApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaveApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFD1157E199A7D6000F156E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFD1157F199A7D6000F156E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FFD11587199A7D6000F156E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FFD11589199A7D6000F156E9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FFD1158F199A7D6000F156E9 /* WaveAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WaveAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFD11594199A7D6000F156E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -93,20 +93,20 @@
 		FFD1157C199A7D6000F156E9 /* WaveApp */ = {
 			isa = PBXGroup;
 			children = (
+				FF1BB70019A1E54A00CFBDE5 /* Main.storyboard */,
+				FFC85CE4199D87BB006EAB92 /* WaveApp.xcdatamodeld */,
 				FFD1157F199A7D6000F156E9 /* AppDelegate.swift */,
-				FFD11586199A7D6000F156E9 /* Main.storyboard */,
 				FFD11589199A7D6000F156E9 /* Images.xcassets */,
 				FFD1157D199A7D6000F156E9 /* Supporting Files */,
 				FFD1159F199A7ECF00F156E9 /* WavesTableViewController.swift */,
 				FFD115A1199A7EF800F156E9 /* WaveViewController.swift */,
 				FFD115A3199A7F2000F156E9 /* Wave.swift */,
 				FF6D8093199C1BDC00D095ED /* ActuatorsTableViewController.swift */,
-				FFDBC035199C1D740044D4FF /* Actuator.swift */,
 				FFDBC037199C1E930044D4FF /* ActuatorViewController.swift */,
-				FFFE6FFF199C313A00358981 /* Sensor.swift */,
+				FFDBC035199C1D740044D4FF /* Actuator.swift */,
 				FFFE7001199C319600358981 /* SensorsTableViewController.swift */,
 				FFFE7003199C333400358981 /* SensorViewController.swift */,
-				FFC85CE4199D87BB006EAB92 /* WaveApp.xcdatamodeld */,
+				FFFE6FFF199C313A00358981 /* Sensor.swift */,
 			);
 			path = WaveApp;
 			sourceTree = "<group>";
@@ -216,8 +216,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFD11588199A7D6000F156E9 /* Main.storyboard in Resources */,
 				FFD1158A199A7D6000F156E9 /* Images.xcassets in Resources */,
+				FF1BB70119A1E54A00CFBDE5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,17 +266,6 @@
 			targetProxy = FFD11590199A7D6000F156E9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		FFD11586199A7D6000F156E9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FFD11587199A7D6000F156E9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		FFD11597199A7D6000F156E9 /* Debug */ = {

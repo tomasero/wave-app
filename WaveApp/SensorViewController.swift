@@ -28,7 +28,8 @@ class SensorViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func saveTapped(sender: AnyObject) {
-        //Reference to our app delegate
+        var saveSuccessful: Bool = false
+        let sensorsTableViewController = self.storyboard.instantiateViewControllerWithIdentifier("SensorsTableViewController") as SensorsTableViewController
         if txtName.text == "" || txtPin.text == "" || txtSensitivity.text == "" {
             var alert: UIAlertView = UIAlertView()
             alert.title = "Errors"
@@ -56,31 +57,46 @@ class SensorViewController: UIViewController, UITextFieldDelegate {
             //Check if item exists
             
             if existingSensor {
-                existingSensor.setValue(txtName.text as String, forKey: "name")
-                existingSensor.setValue(txtPin.text as String, forKey: "pin")
-                existingSensor.setValue(txtSensitivity.text as String, forKey: "sensitivity")
+                //if new name is not the same as the previous
+                //and the new name is not in the list
+                if txtName.text != (existingSensor as Sensor).name && sensorsTableViewController.isInList(txtName.text) {
+                    var alert: UIAlertView = UIAlertView()
+                    alert.title = "Error"
+                    alert.message = "Sensor \(txtName.text) already exists"
+                    alert.addButtonWithTitle("Ok")
+                    alert.show()
+                } else {
+                    existingSensor.setValue(txtName.text as String, forKey: "name")
+                    existingSensor.setValue(txtPin.text as String, forKey: "pin")
+                    existingSensor.setValue(txtSensitivity.text as String, forKey: "sensitivity")
+                    saveSuccessful = true
+                }
             } else {
-                //Create instance of our data model and initialize
-                var newSensor = Sensor(entity: entity, insertIntoManagedObjectContext: context)
-                
-                //Map our properties
-                newSensor.name = txtName.text
-                newSensor.pin = txtPin.text
-                newSensor.sensitivity = txtSensitivity.text
-                existingSensor = newSensor
+                //checks of name already exists
+                if sensorsTableViewController.isInList(txtName.text) {
+                    var alert: UIAlertView = UIAlertView()
+                    alert.title = "Error"
+                    alert.message = "Sensor \(txtName.text) already exists"
+                    alert.addButtonWithTitle("Ok")
+                    alert.show()
+                } else {
+                    //Create instance of our data model and initialize
+                    var newSensor = Sensor(entity: entity, insertIntoManagedObjectContext: context)
+                    
+                    //Map our properties
+                    newSensor.name = txtName.text
+                    newSensor.pin = txtPin.text
+                    newSensor.sensitivity = txtSensitivity.text
+                    existingSensor = newSensor
+                    saveSuccessful = true
+                }
                 
             }
-            
-            println((existingSensor as Sensor).toJsonString())
-
-            
-            //Save our context
-            context.save(nil)
-            
-            //navigate back to root vc
-            //self.navigationController.popToRootViewControllerAnimated(true)
-            let sensorsTableViewController = self.storyboard.instantiateViewControllerWithIdentifier("SensorsTableViewController") as SensorsTableViewController
-            self.navigationController.pushViewController(sensorsTableViewController, animated: false)
+            if saveSuccessful {
+                println((existingSensor as Sensor).toJsonString())
+                context.save(nil)
+                self.navigationController.pushViewController(sensorsTableViewController, animated: false)
+            }
         }
     }
     

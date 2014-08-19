@@ -44,6 +44,8 @@ class WaveViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func saveTapped(sender: AnyObject) {
+        var saveSuccessful: Bool = false
+        let wavesTableViewController = self.storyboard.instantiateViewControllerWithIdentifier("WavesTableViewController") as WavesTableViewController
         if txtName.text == "" || txtDuration.text == "" || txtPeriod.text == "" || txtMinAmp.text == "" || txtMaxAmp.text == "" || txtStep.text == "" || txtType.text == "" {
             var alert: UIAlertView = UIAlertView()
             alert.title = "Errors"
@@ -83,35 +85,52 @@ class WaveViewController: UIViewController, UITextFieldDelegate {
             //Check if item exists
             
             if existingWave {
-                existingWave.setValue(txtName.text as String, forKey: "name")
-                existingWave.setValue(txtDuration.text as String, forKey: "duration")
-                existingWave.setValue(txtPeriod.text as String, forKey: "period")
-                existingWave.setValue(txtMinAmp.text as String, forKey: "minAmp")
-                existingWave.setValue(txtMaxAmp.text as String, forKey: "maxAmp")
-                existingWave.setValue(txtStep.text as String, forKey: "step")
-                existingWave.setValue(txtType.text as String, forKey: "type")
+                //if new name is not the same as the previous
+                //and the new name is not in the list
+                if txtName.text != (existingWave as Wave).name && wavesTableViewController.isInList(txtName.text) {
+                    var alert: UIAlertView = UIAlertView()
+                    alert.title = "Error"
+                    alert.message = "Wave \(txtName.text) already exists"
+                    alert.addButtonWithTitle("Ok")
+                    alert.show()
+                } else {
+                    existingWave.setValue(txtName.text as String, forKey: "name")
+                    existingWave.setValue(txtDuration.text as String, forKey: "duration")
+                    existingWave.setValue(txtPeriod.text as String, forKey: "period")
+                    existingWave.setValue(txtMinAmp.text as String, forKey: "minAmp")
+                    existingWave.setValue(txtMaxAmp.text as String, forKey: "maxAmp")
+                    existingWave.setValue(txtStep.text as String, forKey: "step")
+                    existingWave.setValue(txtType.text as String, forKey: "type")
+                    saveSuccessful = true
+                }
             } else {
-                //Create instance of our data model and initialize
-                var newWave = Wave(entity: entity, insertIntoManagedObjectContext: context)
-                
-                //Map our properties
-                newWave.name = txtName.text
-                newWave.duration = txtDuration.text
-                newWave.period = txtPeriod.text
-                newWave.minAmp = txtMinAmp.text
-                newWave.maxAmp = txtMaxAmp.text
-                newWave.step = txtStep.text
-                newWave.type = txtType.text
-                existingWave = newWave
+                if wavesTableViewController.isInList(txtName.text) {
+                    var alert: UIAlertView = UIAlertView()
+                    alert.title = "Error"
+                    alert.message = "Wave \(txtName.text) already exists"
+                    alert.addButtonWithTitle("Ok")
+                    alert.show()
+                } else {
+                    //Create instance of our data model and initialize
+                    var newWave = Wave(entity: entity, insertIntoManagedObjectContext: context)
+                    
+                    //Map our properties
+                    newWave.name = txtName.text
+                    newWave.duration = txtDuration.text
+                    newWave.period = txtPeriod.text
+                    newWave.minAmp = txtMinAmp.text
+                    newWave.maxAmp = txtMaxAmp.text
+                    newWave.step = txtStep.text
+                    newWave.type = txtType.text
+                    existingWave = newWave
+                    saveSuccessful = true
+                }
             }
-            println((existingWave as Wave).toJsonString())
-            //Save our context
-            context.save(nil)
-            
-            //navigate back to root vc
-            //self.navigationController.popToRootViewControllerAnimated(true)
-            let wavesTableViewController = self.storyboard.instantiateViewControllerWithIdentifier("WavesTableViewController") as WavesTableViewController
-            self.navigationController.pushViewController(wavesTableViewController, animated: false)
+            if saveSuccessful {
+                println((existingWave as Wave).toJsonString())
+                context.save(nil)
+                self.navigationController.pushViewController(wavesTableViewController, animated: false)
+            }
         }
     }
     

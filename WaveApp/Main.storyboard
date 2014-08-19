@@ -79,9 +79,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="2PD-xd-u73" kind="push" id="5qO-4D-Bve"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="1Pe-Bp-f5b" style="IBUITableViewCellStyleDefault" id="eRd-Gb-BBc">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -362,87 +359,6 @@
             </objects>
             <point key="canvasLocation" x="915" y="366"/>
         </scene>
-        <!--Region List-->
-        <scene sceneID="K1Y-cl-MIR">
-            <objects>
-                <tableViewController id="2PD-xd-u73" customClass="RegionsTableViewController" customModule="WaveApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="qDa-jy-u4R">
-                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="aad-YT-zJp">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aad-YT-zJp" id="wd9-cC-7oE">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="2PD-xd-u73" id="Cf5-p7-VlQ"/>
-                            <outlet property="delegate" destination="2PD-xd-u73" id="MXS-qd-5qY"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Region List" id="fyv-bG-Iq9">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="aBD-Hs-55y"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="8BH-fb-jUA">
-                            <connections>
-                                <segue destination="B4J-xx-MyE" kind="push" identifier="newRegion" id="8CK-ZZ-1ZK"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aPU-7g-NAU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="914" y="1032"/>
-        </scene>
-        <!--Region-->
-        <scene sceneID="as5-Ze-UAY">
-            <objects>
-                <viewController id="B4J-xx-MyE" customClass="RegionsTableViewController" customModule="WaveApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="j3R-hh-Ysb">
-                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HFe-m6-dsC">
-                                <rect key="frame" x="16" y="96" width="46" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Components" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fkO-fW-7eU">
-                                <rect key="frame" x="16" y="139" width="99" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="NQF-cx-F9L">
-                                <rect key="frame" x="159" y="92" width="145" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4nx-w0-iGL">
-                                <rect key="frame" x="257" y="135" width="47" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Modify">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Region" id="Mtt-Y5-vQm">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="VuL-nz-FC6"/>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="mRR-m6-4wo"/>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ut8-2i-1hD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1396" y="1040"/>
-        </scene>
         <!--Sensor-->
         <scene sceneID="9CT-VZ-VLa">
             <objects>
@@ -672,8 +588,8 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="S91-Gz-Sw2"/>
-        <segue reference="t08-NW-ia0"/>
         <segue reference="Bis-6r-POy"/>
+        <segue reference="t08-NW-ia0"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.77100605867346939" green="0.61944189237457092" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
